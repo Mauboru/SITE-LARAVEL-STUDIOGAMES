@@ -9,4 +9,5 @@
             </a>
         </div>
     </x-slot>
+    @yield('conteudo')
 </x-app-layout>

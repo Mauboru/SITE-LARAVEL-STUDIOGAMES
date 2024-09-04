@@ -1,9 +1,9 @@
-@extends('templates.main', [
+@extends('home', [
     "title" => "Eixos",
     "header" => "Tabelas de Eixos"
 ])
 
-@section('content')
+@section('conteudo')
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
