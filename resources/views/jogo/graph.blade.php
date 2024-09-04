@@ -37,11 +37,11 @@
                 colors: ['#198754'],
                 legend: 'none',
                 hAxis: {
-                    title: 'Nome do Jogo',
+                    title: 'Horas jogadas',
                     titleTextStyle: { fontSize: 12, bold: true },
                 },
                 vAxis: {
-                    title: 'Horas jogadas',
+                    title: 'Nome do Jogo',
                     titleTextStyle: { fontSize: 12, bold: true },
                 },
                 width: '100%',
@@ -75,5 +75,5 @@
             drawPieChart();
         }
     </script>
-    
+
 @endsection

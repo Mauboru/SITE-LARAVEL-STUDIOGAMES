@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Jogo extends Model {
+class Categoria extends Model {
     use HasFactory;
     use SoftDeletes;
 
-    public function categoria() {
-        return $this->belongsTo('App\Models\Categoria');
+    public function jogo() {
+        return $this->belongsToMany('App\Models\Jogo', 'jogos');
     }
 }

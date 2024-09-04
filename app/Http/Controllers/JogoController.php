@@ -97,7 +97,7 @@ class JogoController extends Controller {
         $data = [['Nome do Jogo', 'Quantidade Total Horas']];
     
         foreach ($jogos as $jogo) {
-            $data[] = [$jogo->nome, 1];
+            $data[] = [$jogo->nome, $jogo->qtdHorasJogadas];
         }
         $data = json_encode($data);
         return view('jogo.graph', compact('data'));
