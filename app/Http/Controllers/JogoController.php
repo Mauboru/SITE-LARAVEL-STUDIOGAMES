@@ -25,6 +25,7 @@ class JogoController extends Controller {
             $data = new Jogo();
             $data->nome = $request->nome;
             $data->descricao = $request->descricao;
+            $data->qtdHorasJogadas = $request->qtdHorasJogadas;
             $data->save();
             $ext = $request->file('documento')->getClientOriginalExtension();
             $nome_arq = $data->id . "_" . time() . "." . $ext; 
@@ -59,10 +60,13 @@ class JogoController extends Controller {
         if(isset($data)) {
             $data->nome = $request->nome;
             $data->descricao = $request->descricao;
-            $ext = $request->file('documento')->getClientOriginalExtension();
-            $nome_arq = $data->id . "_" . time() . "." . $ext; 
-            $request->file('documento')->storeAs("public/", $nome_arq);
-            $data->url = $nome_arq;
+            $data->qtdHorasJogadas = $request->qtdHorasJogadas;
+            if ($request->hasFile('documento')) {
+                $ext = $request->file('documento')->getClientOriginalExtension();
+                $nome_arq = $data->id . "_" . time() . "." . $ext; 
+                $request->file('documento')->storeAs('public/', $nome_arq);
+                $data->url = $nome_arq;
+            }
             $data->save();
             return redirect()->route('jogo.index');
         }
@@ -89,13 +93,13 @@ class JogoController extends Controller {
     }
 
     public function graph() {
-        $data = json_encode([
-            ["NOME", "TOTAL"],
-            ["Eduardo", 100],
-            ["Maria", 130],
-            ["Carlos", 200],
-            ["Rafaela", 120],
-        ]);
+        $jogos = Jogo::all();
+        $data = [['Nome do Jogo', 'Quantidade Total Horas']];
+    
+        foreach ($jogos as $jogo) {
+            $data[] = [$jogo->nome, 1];
+        }
+        $data = json_encode($data);
         return view('jogo.graph', compact('data'));
-    }
+    }    
 }

@@ -11,7 +11,8 @@ Route::get('/home', function () {
 })->middleware(['auth'])->name('home');
 
 Route::resource('jogo', 'App\Http\Controllers\JogoController');
+Route::get('index/jogo', 'App\Http\Controllers\JogoController@index')->name('jogo');
 Route::get('report/jogo', 'App\Http\Controllers\JogoController@report')->name('report');
-// Route::get('graph/eixo', 'App\Http\Controllers\JogoController@graph')->name('graph');
+Route::get('graph/jogo', 'App\Http\Controllers\JogoController@graph')->name('graph');
 
 require __DIR__.'/auth.php';

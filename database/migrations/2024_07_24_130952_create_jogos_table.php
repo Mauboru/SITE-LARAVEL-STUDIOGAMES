@@ -10,6 +10,7 @@ class CreateJogosTable extends Migration {
             $table->id();
             $table->string('nome', 100);
             $table->text('descricao');
+            $table->integer('qtdHorasJogadas');
             $table->string('url')->nullable();
             $table->timestamps();
             $table->softDeletes();

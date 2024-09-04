@@ -22,6 +22,11 @@
                     <p class="mt-1 text-gray-700">{{ $data->descricao }}</p>
                 </div>
 
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Quantidade de horas jogadas:</h3>
+                    <p class="mt-1 text-gray-700">{{ $data->qtdHorasJogadas }}</p>
+                </div>
+
                 @if ($data->url)
                     <div class="mb-4">
                         <h3 class="text-lg font-medium text-gray-900">Documento:</h3>
