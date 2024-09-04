@@ -23,6 +23,11 @@
                 </div>
 
                 <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Categoria:</h3>
+                    <p class="mt-1 text-gray-700">{{ $data->categoria->name }}</p>
+                </div>
+
+                <div class="mb-4">
                     <h3 class="text-lg font-medium text-gray-900">Quantidade de horas jogadas:</h3>
                     <p class="mt-1 text-gray-700">{{ $data->qtdHorasJogadas }}</p>
                 </div>

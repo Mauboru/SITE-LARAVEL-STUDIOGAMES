@@ -10,6 +10,8 @@ class CreateJogosTable extends Migration {
             $table->id();
             $table->string('nome', 100);
             $table->text('descricao');
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->integer('qtdHorasJogadas');
             $table->string('url')->nullable();
             $table->timestamps();

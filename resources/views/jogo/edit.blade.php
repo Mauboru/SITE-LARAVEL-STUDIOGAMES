@@ -27,7 +27,20 @@
                         <label for="descricao" class="block text-sm font-medium text-gray-700">Descrição</label>
                         <textarea id="descricao" name="descricao" rows="6" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">{{ $data->descricao }}</textarea>
                     </div>
-                    qtdHorasJogadas
+
+                    <!-- Campo Categoria -->
+                    <div class="mb-4">
+                        <label for="categoria_id" class="block text-sm font-medium text-gray-700">Categoria</label>
+                        <select id="categoria_id" name="categoria_id" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                            <option value="">Selecione uma Categoria</option>
+                            @foreach ($categorias as $categoria) <!-- Use 'categorias' ao invés de 'data' -->
+                                <option value="{{ $categoria->id }}" {{ $data->categoria_id == $categoria->id ? 'selected' : '' }}>
+                                    {{ $categoria->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    
                     <!-- Campo Horas Jogadas -->
                     <div class="mb-4">
                         <label for="qtdHorasJogadas" class="block text-sm font-medium text-gray-700">Quantidade Horas Jogadas</label>

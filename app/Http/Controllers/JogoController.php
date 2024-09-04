@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jogo;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Dompdf\Dompdf;
@@ -16,7 +17,8 @@ class JogoController extends Controller {
 
     public function create() {
         // $this->authorize('create', Jogo::class);
-        return view('jogo.create');
+        $data = Categoria::all();
+        return view('jogo.create', compact('data'));
     }
 
     public function store(Request $request) {
@@ -25,6 +27,7 @@ class JogoController extends Controller {
             $data = new Jogo();
             $data->nome = $request->nome;
             $data->descricao = $request->descricao;
+            $data->categoria_id = $request->categoria_id;
             $data->qtdHorasJogadas = $request->qtdHorasJogadas;
             $data->save();
             $ext = $request->file('documento')->getClientOriginalExtension();
@@ -48,8 +51,10 @@ class JogoController extends Controller {
     public function edit($id) {
         // $this->authorize('edit', Jogo::class);
         $data = Jogo::find($id);
+        $categorias = Categoria::all();
+
         if(isset($data)) {
-            return view('jogo.edit', compact(['data']));
+            return view('jogo.edit', compact(['data', 'categorias']));
         }
         return "<h1>ERRO: Jogo NÃO ENCONTRADO!</h1>";
     }
@@ -60,6 +65,7 @@ class JogoController extends Controller {
         if(isset($data)) {
             $data->nome = $request->nome;
             $data->descricao = $request->descricao;
+            $data->categoria_id = $request->categoria_id;
             $data->qtdHorasJogadas = $request->qtdHorasJogadas;
             if ($request->hasFile('documento')) {
                 $ext = $request->file('documento')->getClientOriginalExtension();
