@@ -1,7 +1,4 @@
-@extends('home', [
-    "title" => "Eixos",
-    "header" => "Tabelas de Eixos"
-])
+@extends('home')
 
 @section('conteudo')
 
@@ -19,19 +16,28 @@
                 </thead>
                 <tbody>
                     @foreach($data as $jogo)
-                    <tr>
+                    <tr class="">
                         <td class="py-2">{{ $jogo->id }}</td>
                         <td class="py-2">{{ $jogo->nome }}</td>
                         <td class="py-2">{{ $jogo->descricao }}</td>
-                        <td class="py-2 flex space-x-2">
-                            <a href="{{ route('jogo.show', $jogo->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded-md">Ver</a>
-                            <a href="{{ route('jogo.edit', $jogo->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded-md">Editar</a>
-                            <form action="{{ route('jogo.destroy', $jogo->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Excluir</button>
-                            </form>
-                        </td>
+                        <td class="py-2 flex justify-content-center space-x-2 m-3">
+                        <!-- Botão Ver -->
+                        <form action="{{ route('jogo.show', $jogo->id) }}" method="GET">
+                            <button type="submit" class="btn btn-primary px-3 py-2">🔍︎</button>
+                        </form>
+                        
+                        <!-- Botão Editar -->
+                        <form action="{{ route('jogo.edit', $jogo->id) }}" method="GET">
+                            <button type="submit" class="btn btn-warning px-3 py-2"> Editar</button>
+                        </form>
+                        
+                        <!-- Botão Excluir -->
+                        <form action="{{ route('jogo.destroy', $jogo->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger px-3 py-2">Excluir</button>
+                        </form>
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>

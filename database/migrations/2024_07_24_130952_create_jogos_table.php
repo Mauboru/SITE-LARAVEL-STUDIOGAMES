@@ -12,6 +12,7 @@ class CreateJogosTable extends Migration {
             $table->text('descricao');
             $table->string('url')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
