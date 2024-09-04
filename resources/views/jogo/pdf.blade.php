@@ -2,6 +2,6 @@
 <hr>
 <ul>
     @foreach ($data as $item)
-        <li>{{$item->nome}}</li>
+        <li>{{$item->nome}} é um {{$item->descricao}} , {{$item->qtdHorasJogadas}} horas jogadas , {{$item->categoria->name}}</li>
     @endforeach
 </ul>

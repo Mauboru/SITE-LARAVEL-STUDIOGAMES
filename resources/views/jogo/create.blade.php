@@ -35,7 +35,6 @@
                     </select>
                 </div>
 
-
                 <!-- Campo Horas Jogadas -->
                 <div class="mb-4">
                     <label for="qtdHorasJogadas" class="block text-sm font-medium text-gray-700">Quantidade Horas Jogadas</label>
