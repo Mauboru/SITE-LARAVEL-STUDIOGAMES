@@ -4,17 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermissionsTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+class CreatePermissionsTable extends Migration {
+    public function up() {
         Schema::create('permissions', function (Blueprint $table) {
-            
             $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('resource_id');
             $table->foreign('role_id')->references('id')->on('roles');
@@ -25,13 +17,7 @@ class CreatePermissionsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('permissions');
     }
 }

@@ -7,7 +7,9 @@
                 {{ __('Jogos') }}
             </h2>
             <div class="d-flex">
-                <a href="{{ route('categoria.create') }}" class="btn btn-success me-2">Add Categoria</a>
+                @can('hasFullPermission', App\Models\Categoria::class)
+                    <a href="{{ route('categoria.create') }}" class="btn btn-success me-2">Add Categoria</a>
+                @endcan
                 <a href="{{ route('jogo.create') }}" class="btn btn-success me-2">Add Jogo</a>
                 <a href="{{ route('report') }}" class="btn btn-danger me-2">PDF</a>
                 <a href="{{ route('graph') }}" class="btn btn-primary me-2">Gráfico</a>

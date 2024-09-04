@@ -2,45 +2,31 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Role;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PermissionController;
+use App\Models\User;
+use App\Models\Role;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
-use App\Providers\RouteServiceProvider;
-use App\Http\Controllers\PermissionController;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
-{
-    /**
-     * Display the registration view.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        $roles = Role::orderBy('name')->get();
+class RegisteredUserController extends Controller {
+    public function create(): View {
+        $roles = Role::orderBy('nome')->get();
         return view('auth.register', compact('roles'));
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request): RedirectResponse {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required'],
+            'role' => ['required'],            
         ]);
 
         $user = User::create([
@@ -49,10 +35,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => $request->role,
         ]);
-
         event(new Registered($user));
-
         Auth::login($user);
+        PermissionController::loadPermissions(Auth::user()->role_id);
 
         return redirect(RouteServiceProvider::HOME);
     }

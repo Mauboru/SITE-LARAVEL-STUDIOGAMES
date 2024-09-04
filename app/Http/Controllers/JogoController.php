@@ -10,19 +10,16 @@ use Dompdf\Dompdf;
 
 class JogoController extends Controller {
     public function index() {
-        // $this->authorize('index', Jogo::class);
         $data = Jogo::all();    
         return view('jogo.index', compact(['data']));
     }
 
     public function create() {
-        // $this->authorize('create', Jogo::class);
         $data = Categoria::all();
         return view('jogo.create', compact('data'));
     }
 
     public function store(Request $request) {
-        // $this->authorize('create', Jogo::class);
         if($request->hasFile('documento')) {
             $data = new Jogo();
             $data->nome = $request->nome;
@@ -40,7 +37,6 @@ class JogoController extends Controller {
     }
 
     public function show($id) {
-        // $this->authorize('show', Jogo::class);
         $data = Jogo::find($id);
         if(isset($data)) {
             return view('jogo.show', compact(['data']));
@@ -49,7 +45,6 @@ class JogoController extends Controller {
     }
 
     public function edit($id) {
-        // $this->authorize('edit', Jogo::class);
         $data = Jogo::find($id);
         $categorias = Categoria::all();
 
@@ -60,7 +55,6 @@ class JogoController extends Controller {
     }
 
     public function update(Request $request, $id) {
-        // $this->authorize('edit', Jogo::class);
         $data = Jogo::find($id);
         if(isset($data)) {
             $data->nome = $request->nome;
@@ -80,7 +74,6 @@ class JogoController extends Controller {
     }
 
     public function destroy($id) {
-        // $this->authorize('destroy', Jogo::class);
         $data = Jogo::find($id);
         if(isset($data)) {
             $data->delete();

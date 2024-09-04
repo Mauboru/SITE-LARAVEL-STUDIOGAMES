@@ -15,9 +15,11 @@
                     <x-nav-link :href="route('jogo')" :active="request()->routeIs('home')">
                         {{ __('Jogos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('categoria')" :active="request()->routeIs('home')">
-                        {{ __('Categorias') }}
-                    </x-nav-link>
+                    @can('hasFullPermission', App\Models\Categoria::class)
+                        <x-nav-link :href="route('categoria')" :active="request()->routeIs('home')">
+                            {{ __('Categorias') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 

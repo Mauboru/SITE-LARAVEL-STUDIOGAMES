@@ -13,9 +13,7 @@ class PermissionSeeder extends Seeder {
             ["role_id" => 1, "resource_id" => 1, "permission" => true],
             ["role_id" => 1, "resource_id" => 2, "permission" => true],
             // ALUNO
-            ["role_id" => 2, "resource_id" => 3, "permission" => true],
-            ["role_id" => 2, "resource_id" => 4, "permission" => true],
-            ["role_id" => 2, "resource_id" => 5, "permission" => true],
+            ["role_id" => 2, "resource_id" => 1, "permission" => true],
         ];
         DB::table('permissions')->insert($data);
     }
