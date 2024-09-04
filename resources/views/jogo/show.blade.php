@@ -1,22 +1,36 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mais Informações - Eixo</title>
-</head>
-<body>
-    <h1>Mais Informações - Eixo</h1>
-    <hr>
-    <a href="{{route('eixo.index')}}">Voltar</a>
-    <hr>
-    <ul>
-        <li><b>ID:</b> {{$eixo->id}}</li>
-        <li><b>NOME:</b> {{$eixo->nome}}</li>
-        <li><b>DESCRIÇÃO:</b> {{$eixo->descricao}}</li>
-        <li><b>CRIADO:</b> {{$eixo->created_at}}</li>
-        <li><b>ALTERADO:</b> {{$eixo->updated_at}}</li>
-    </ul>
-</body>
-</html>
+@extends('home')
+
+@section('conteudo')
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Detalhes do Jogo</h2>
+                
+                <!-- Botão Voltar -->
+                <a href="{{ route('jogo.index') }}" class="btn btn-success mb-4">
+                    Voltar
+                </a>
+
+                <!-- Detalhes do Jogo -->
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Nome do Jogo:</h3>
+                    <p class="mt-1 text-gray-700">{{ $data->nome }}</p>
+                </div>
+
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Descrição:</h3>
+                    <p class="mt-1 text-gray-700">{{ $data->descricao }}</p>
+                </div>
+
+                @if ($data->url)
+                    <div class="mb-4">
+                        <h3 class="text-lg font-medium text-gray-900">Documento:</h3>
+                        <a href="{{ asset('storage/' . $data->url) }}" class="btn btn-danger" target="_blank">
+                            Ver PDF
+                        </a>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+@endsection
