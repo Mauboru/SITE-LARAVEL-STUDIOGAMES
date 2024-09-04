@@ -6,9 +6,10 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Jogos') }}
             </h2>
-            <a href="{{ route('jogo.create') }}" class="btn btn-primary">
-                +
-            </a>
+            <div class="flex justify-between items-center">
+                <a href="{{ route('jogo.create') }}" class="btn btn-primary mr-2">+</a>
+                <a href="{{ route('report') }}" class="btn btn-DANGER mr-2">PDF</a>
+            </div>
         </div>
     </x-slot>
     @yield('conteudo')

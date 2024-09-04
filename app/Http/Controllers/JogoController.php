@@ -84,7 +84,7 @@ class JogoController extends Controller {
         $dompdf = new Dompdf();
         $dompdf->loadHtml(view('jogo.pdf', compact('data')));
         $dompdf->render();
-        $dompdf->stream("relatorio-horas-turma.pdf", 
+        $dompdf->stream("relatorio-jogos-cadastrados.pdf", 
             array("Attachment" => false));
     }
 
