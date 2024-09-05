@@ -18,6 +18,10 @@ class CategoriaSeeder extends Seeder {
                 "name" => "Ação",
                 "descricao" => "jogos de ação",
             ],
+            [
+                "name" => "Simulador",
+                "descricao" => "jogos de simulação",
+            ],
         ];
         DB::table('categorias')->insert($data);
     }
