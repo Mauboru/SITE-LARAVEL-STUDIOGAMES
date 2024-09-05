@@ -1,8 +1,24 @@
+<title>STUDIO GAMES - REGISTER</title>
+
+<style>
+    .text-white {
+        color: white;
+        font-size: 2em;
+        font-weight: bold;
+        text-shadow: 0 0 5px purple;
+    }
+    .text-purple {
+        color: purple;
+        font-size: 2em;
+        font-weight: bold;
+    }
+</style>
+
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <span class="text-white">STUDIO </span><span class="text-purple">GAMES</span>
             </a>
         </x-slot>
 

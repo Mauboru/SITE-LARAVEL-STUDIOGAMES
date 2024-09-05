@@ -1,8 +1,9 @@
+<title>STUDIO GAMES - LOGIN</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="{{ asset('logo.png') }}" alt="Logo" width="170" height="170">
             </a>
         </x-slot>
 

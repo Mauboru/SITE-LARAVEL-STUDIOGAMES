@@ -5,11 +5,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <h2 class="text-2xl font-semibold mb-4">Alterar Jogo</h2>
-                
-                <!-- Botão Voltar -->
-                <a href="{{ route('jogo.index') }}" class="btn btn-success mb-4">
-                    Voltar
-                </a>
 
                 <!-- Formulário de Edição -->
                 <form action="{{ route('jogo.update', $data->id) }}" method="POST" enctype="multipart/form-data">
@@ -55,11 +50,10 @@
                             <p class="mt-2 text-sm text-gray-600">Arquivo atual: {{ $data->url }}</p>
                         @endif
                     </div>
-
+                    <!-- Botão Voltar -->
+                    <a href="{{ route('jogo') }}" class="btn btn-success mb-4">Voltar</a>
                     <!-- Botão Salvar -->
-                    <div class="flex justify-end">
-                        <button type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary mb-4">Salvar</button>
                 </form>
             </div>
         </div>

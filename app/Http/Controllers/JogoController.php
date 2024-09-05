@@ -34,6 +34,7 @@ class JogoController extends Controller {
             $data->save();
             return redirect()->route('jogo.index');
         }
+        return "<h1>ERRO: Jogo NÃO CADASTRADO!</h1>";
     }
 
     public function show($id) {

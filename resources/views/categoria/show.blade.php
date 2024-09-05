@@ -7,9 +7,7 @@
                 <h2 class="text-2xl font-semibold mb-4">Detalhes da Categoria</h2>
                 
                 <!-- Botão Voltar -->
-                <a href="{{ route('categoria.index') }}" class="btn btn-success mb-4">
-                    Voltar
-                </a>
+                <a href="{{ route('categoria') }}" class="btn btn-success mb-4">Voltar</a>
 
                 <!-- Detalhes do Jogo -->
                 <div class="mb-4">
