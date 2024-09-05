@@ -8,10 +8,10 @@ use App\Policies\CategoriaPolicy;
 
 class AuthServiceProvider extends ServiceProvider {
     protected $policies = [
-        'App\Models\Categoria' => 'App\Policies\CategoriaPolicy',
+        // 'App\Models\Categoria' => 'App\Policies\CategoriaPolicy',
     ];
 
-    public function boot() {
-        $this->registerPolicies();
+    public function boot(): void {
+        // $this->registerPolicies();
     }
 }

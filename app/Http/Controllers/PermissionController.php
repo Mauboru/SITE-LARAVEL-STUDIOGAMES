@@ -18,5 +18,13 @@ class PermissionController extends Controller {
     public static function isAuthorized($resource) {
         $permissions = session('user_permissions');
         return $permissions[$resource];
+
+        // try {
+        //     $bool = $permissions[$resource];
+        // }catch(Exception e) {
+        //     return false;
+        // }
+ 
+        // return $bool;
     }
 }

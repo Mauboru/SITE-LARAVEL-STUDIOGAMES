@@ -12,11 +12,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('jogo')" :active="request()->routeIs('home')">
+                    <x-nav-link :href="route('jogo')" :active="request()->routeIs('jogo')">
                         {{ __('Jogos') }}
                     </x-nav-link>
                     @can('hasFullPermission', App\Models\Categoria::class)
-                        <x-nav-link :href="route('categoria')" :active="request()->routeIs('home')">
+                        <x-nav-link :href="route('categoria')" :active="request()->routeIs('categoria')">
                             {{ __('Categorias') }}
                         </x-nav-link>
                     @endcan
@@ -39,9 +39,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('jogo.index')">
-                                {{ __('Jogo') }}
-                            </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

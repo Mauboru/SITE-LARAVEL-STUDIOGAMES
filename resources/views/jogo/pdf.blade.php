@@ -1,4 +1,4 @@
-<h1>Relatorio de Eixos</h1>
+<h1>Relatorio de Jogos</h1>
 <hr>
 <ul>
     @foreach ($data as $item)

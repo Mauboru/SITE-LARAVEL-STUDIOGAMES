@@ -11,6 +11,6 @@ class Categoria extends Model {
     use SoftDeletes;
 
     public function jogo() {
-        return $this->belongsToMany('App\Models\Jogo', 'jogos');
+        return $this->hasMany('App\Models\Jogo', 'jogos');
     }
 }

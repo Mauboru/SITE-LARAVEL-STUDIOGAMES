@@ -55,7 +55,6 @@
                         <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                 </select>
-
             </div>
 
             <div class="flex items-center justify-end mt-4">
